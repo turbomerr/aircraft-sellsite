@@ -111,12 +111,19 @@ export type CancelOfferBody = {
     status: "canceled"
 };
 
-export type paymentStatus = "pending" | "success" | "failed"
+export type PaymentStatus = "pending" | "success" | "failed" | "cancelled";
 
 export interface IPayment {
-    user: Types.ObjectId,
-    aircraft : Types.ObjectId,
-    amount : number,
-    status : paymentStatus,
-    stripeSessionId: string
+  user: Types.ObjectId;
+  aircraft: Types.ObjectId;
+  amount: number;
+  currency: string;
+  status: PaymentStatus;
+  stripeSessionId?: string;
+  stripePaymentIntentId?: string;
+  paidAt?: Date;
+}
+
+export type CheckoutParams = {
+    aircraftId : string
 }
