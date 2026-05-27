@@ -110,3 +110,13 @@ export type RespondOfferBody = {
 export type CancelOfferBody = {
     status: "canceled"
 };
+
+export type paymentStatus = "pending" | "success" | "failed"
+
+export interface IPayment {
+    user: Types.ObjectId,
+    aircraft : Types.ObjectId,
+    amount : number,
+    status : paymentStatus,
+    stripeSessionId: string
+}
